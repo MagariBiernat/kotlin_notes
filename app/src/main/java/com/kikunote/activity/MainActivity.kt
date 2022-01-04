@@ -112,7 +112,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(Intent(this, EditActivity::class.java))
             }
             R.id.ib_menu -> {
-                session.logoutUser()
+                loggingOutDialog()
             }
         }
     }
@@ -130,6 +130,28 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
         super.onResume()
+    }
+
+    private fun loggingOutDialog() {
+        AwesomeDialog
+            .build(this)
+            .body("Are You sure You want to log out ?", color = ContextCompat.getColor(this, R.color.colorTitle))
+            .background(R.drawable.background_dialog)
+            .icon(R.mipmap.ic_launcher)
+            .onPositive("Yes",
+                buttonBackgroundColor = android.R.color.holo_red_light,
+                textColor = ContextCompat.getColor(this, R.color.colorTitle)
+            ){
+                session.logoutUser()
+                finish();
+            }
+            .onNegative(
+                "Cancel",
+                buttonBackgroundColor = R.drawable.bg_btn_black,
+                textColor = ContextCompat.getColor(this, R.color.background)
+            ){
+                return@onNegative
+            }
     }
 
     override fun onBackPressed() {
