@@ -14,6 +14,9 @@
     <string name="share">Share</string>
     <string name="menu">Menu</string>
 
+    //Splash Screen
+    <string name="title_activity_splash_screen">Super application</string>
+
     <string-array name="labels">
         <item>Personal</item>
         <item>Work</item>
