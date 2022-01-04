@@ -27,6 +27,7 @@ class UserSession(private var context: Context) {
         editor.putBoolean(IS_LOGGED_IN, true)
         editor.putString(KEY_USERNAME, name)
         editor.putString(KEY_EMAIL, email)
+        editor.apply()
     }
 
     fun checkIsLoggedIn(){

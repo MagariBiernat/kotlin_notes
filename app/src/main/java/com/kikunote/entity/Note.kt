@@ -20,5 +20,6 @@ data class Note(
     @ColumnInfo(name = "time") var time: String = "",
     @ColumnInfo(name = "updatedDate") var updatedDate: String = "",
     @ColumnInfo(name = "updatedTime") var updatedTime: String = "",
-    @ColumnInfo(name = "body") var body: String = ""
+    @ColumnInfo(name = "body") var body: String = "",
+    @ColumnInfo(name = "owner") var owner: String = ""
 ) : Parcelable

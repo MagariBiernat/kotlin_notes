@@ -1,10 +1,17 @@
 package com.kikunote.activity
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.ContextMenu
+import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import com.example.awesomedialog.*
 import com.google.android.play.core.appupdate.AppUpdateManager
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
 import com.google.android.play.core.install.model.AppUpdateType
@@ -12,12 +19,13 @@ import com.google.android.play.core.install.model.UpdateAvailability
 import com.kikunote.R
 import com.kikunote.adapter.SectionsPagerAdapter
 import com.kikunote.databinding.ActivityMainBinding
+import com.kikunote.session.UserSession
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityMainBinding
     private lateinit var appUpdateManager: AppUpdateManager
-
+    private lateinit var session: UserSession
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -25,6 +33,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         initView()
         initListener()
+//        initContextMenuToolbar()
+        initSession()
+
 
         appUpdateManager = AppUpdateManagerFactory.create(this)
         val appUpdateInfoTask = appUpdateManager.appUpdateInfo
@@ -54,13 +65,41 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             )
         binding.viewPager.adapter = sectionsPagerAdapter
         binding.tabs.setupWithViewPager(view_pager)
-
     }
 
     private fun initListener() {
         binding.toolbar.ibSearch.setOnClickListener(this)
         binding.floatingActionButton.setOnClickListener(this)
     }
+
+    private fun initSession() {
+        session = UserSession(applicationContext)
+    }
+
+//    private fun initContextMenuToolbar() {
+//        registerForContextMenu(binding.toolbar.ibMenu)
+//    }
+//
+//    override fun onCreateContextMenu(
+//        menu: ContextMenu?,
+//        v: View?,
+//        menuInfo: ContextMenu.ContextMenuInfo
+//    ) {
+//        super.onCreateContextMenu(menu, v, menuInfo)
+//        menu?.setHeaderTitle("Pick option")
+//        menu?.add(0, v!!.getId(),0, "Profile")
+//        menu?.add(0, v!!.getId(),0, "Logout")
+//    }
+//
+//
+//    override fun onContextItemSelected(item: MenuItem): Boolean {
+//        if(item.getTitle() == "Profile") {
+//            Toast
+//                .makeText(this@MainActivity, "Profile clicked", Toast.LENGTH_SHORT)
+//                .show()
+//        }
+//        return true
+//    }
 
     override fun onClick(v: View) {
         when (v.id) {
@@ -70,6 +109,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.floatingActionButton -> {
                 startActivity(Intent(this, EditActivity::class.java))
+            }
+            R.id.ib_menu -> {
+
             }
         }
     }
@@ -87,6 +129,29 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
         super.onResume()
+    }
+
+    override fun onBackPressed() {
+
+        AwesomeDialog
+            .build(this)
+            .body("Are You sure You want to leave ?", color = ContextCompat.getColor(this, R.color.colorTitle))
+            .background(R.drawable.background_dialog)
+            .icon(R.mipmap.ic_launcher)
+            .onPositive("Yes, leave",
+                buttonBackgroundColor = android.R.color.holo_red_light,
+                textColor = ContextCompat.getColor(this, R.color.colorTitle)
+            ){
+                finish()
+            }
+            .onNegative(
+                "Cancel",
+                buttonBackgroundColor = R.drawable.bg_btn_black,
+                textColor = ContextCompat.getColor(this, R.color.background)
+            ){
+                return@onNegative
+            }
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
