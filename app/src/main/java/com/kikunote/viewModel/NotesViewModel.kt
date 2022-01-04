@@ -35,7 +35,7 @@ class NotesViewModel(application: Application) : AndroidViewModel(application) {
     fun setNotesByLabel(label: String) {
         val listItems = arrayListOf<Note>()
 
-        listItems.addAll(dao.getByLabel(label))
+        listItems.addAll(dao.getByLabel(label, owner))
         listNotes.postValue(listItems)
     }
 

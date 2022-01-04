@@ -69,6 +69,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun initListener() {
         binding.toolbar.ibSearch.setOnClickListener(this)
+        binding.toolbar.ibMenu.setOnClickListener(this)
         binding.floatingActionButton.setOnClickListener(this)
     }
 
@@ -111,7 +112,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(Intent(this, EditActivity::class.java))
             }
             R.id.ib_menu -> {
-
+                session.logoutUser()
             }
         }
     }

@@ -24,6 +24,6 @@ interface NoteDao {
     @Query("SELECT * FROM notes WHERE title LIKE :search AND owner = :owner ORDER BY id DESC")
     fun getByTitle(search: String?, owner: String): List<Note>
 
-    @Query("SELECT * FROM notes WHERE label = :id ORDER BY id DESC")
-    fun getByLabel(id: String) : List<Note>
+    @Query("SELECT * FROM notes WHERE label = :id AND owner = :owner ORDER BY id DESC")
+    fun getByLabel(id: String, owner: String) : List<Note>
 }

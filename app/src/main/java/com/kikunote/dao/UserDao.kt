@@ -17,4 +17,7 @@ interface UserDao {
 
     @Query("SELECT * FROM users WHERE email = :email")
     fun getUserByEmail(email: String): List<User>
+
+    @Query("SELECT * FROM users WHERE email = :email AND password = :password")
+    fun checkIfUserExists(email: String, password: String): List<User>
 }

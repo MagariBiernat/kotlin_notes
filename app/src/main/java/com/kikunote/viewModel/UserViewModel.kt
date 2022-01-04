@@ -31,4 +31,15 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
         return false
     }
 
+    fun checkCredentials(email:String, password:String): User? {
+        val listItems = arrayListOf<User>()
+        listItems.addAll(dao.checkIfUserExists(email, password))
+
+        if(listItems.isNotEmpty()){
+            return listItems[0]
+        }
+
+        return null
+    }
+
 }
