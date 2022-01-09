@@ -6,8 +6,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.ContextMenu
+import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import android.widget.AdapterView
+import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -22,10 +25,11 @@ import com.kikunote.databinding.ActivityMainBinding
 import com.kikunote.session.UserSession
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
+class MainActivity : AppCompatActivity(), View.OnClickListener, PopupMenu.OnMenuItemClickListener {
     private lateinit var binding: ActivityMainBinding
     private lateinit var appUpdateManager: AppUpdateManager
     private lateinit var session: UserSession
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -33,7 +37,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         initView()
         initListener()
-//        initContextMenuToolbar()
         initSession()
 
 
@@ -54,6 +57,37 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
 
+    }
+
+    private fun showPopup(v: View){
+        val popup: PopupMenu = PopupMenu(this, v)
+        popup.setOnMenuItemClickListener(this)
+        popup.inflate(R.menu.toolbar_menu)
+        popup.show()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onContextItemSelected(item: MenuItem): Boolean {
+        return super.onContextItemSelected(item)
+    }
+
+    override fun onMenuItemClick(item: MenuItem?): Boolean {
+        return when (item?.itemId){
+            R.id.profile -> {
+                Toast
+                    .makeText(this@MainActivity, "Profile clicked", Toast.LENGTH_SHORT)
+                    .show()
+                true
+            }
+            R.id.logout -> {
+                loggingOutDialog()
+                true
+            }
+            else -> false
+        }
     }
 
     private fun initView() {
@@ -77,31 +111,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         session = UserSession(applicationContext)
     }
 
-//    private fun initContextMenuToolbar() {
-//        registerForContextMenu(binding.toolbar.ibMenu)
-//    }
-//
-//    override fun onCreateContextMenu(
-//        menu: ContextMenu?,
-//        v: View?,
-//        menuInfo: ContextMenu.ContextMenuInfo
-//    ) {
-//        super.onCreateContextMenu(menu, v, menuInfo)
-//        menu?.setHeaderTitle("Pick option")
-//        menu?.add(0, v!!.getId(),0, "Profile")
-//        menu?.add(0, v!!.getId(),0, "Logout")
-//    }
-//
-//
-//    override fun onContextItemSelected(item: MenuItem): Boolean {
-//        if(item.getTitle() == "Profile") {
-//            Toast
-//                .makeText(this@MainActivity, "Profile clicked", Toast.LENGTH_SHORT)
-//                .show()
-//        }
-//        return true
-//    }
-
     override fun onClick(v: View) {
         when (v.id) {
             R.id.ib_search -> {
@@ -112,7 +121,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(Intent(this, EditActivity::class.java))
             }
             R.id.ib_menu -> {
-                loggingOutDialog()
+                showPopup(v)
             }
         }
     }
