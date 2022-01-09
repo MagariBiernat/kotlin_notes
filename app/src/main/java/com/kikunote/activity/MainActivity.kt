@@ -77,9 +77,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, PopupMenu.OnMenu
     override fun onMenuItemClick(item: MenuItem?): Boolean {
         return when (item?.itemId){
             R.id.profile -> {
-                Toast
-                    .makeText(this@MainActivity, "Profile clicked", Toast.LENGTH_SHORT)
-                    .show()
+                val intent = Intent(this@MainActivity, ProfileActivity::class.java)
+                startActivity(intent)
                 true
             }
             R.id.logout -> {
