@@ -13,6 +13,17 @@
     <string name="delete">Delete</string>
     <string name="share">Share</string>
     <string name="menu">Menu</string>
+    <string name="login">Login</string>
+    <string name="login_title">Login page</string>
+    <string name="register_title">Register page</string>
+    <string name="register_button">Register</string>
+    <string name="login_button">Log in</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confrim_password">Confirm password</string>
+    <string name="current_password">Current password</string>
+    <string name="name">Name</string>
+    <string name="edit_profile">Edit profile</string>
 
     //Splash Screen
     <string name="title_activity_splash_screen">Super application</string>

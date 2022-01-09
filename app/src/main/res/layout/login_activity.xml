@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.kikunote.activity.LoginActivity">
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="120dp"
@@ -20,68 +21,101 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Login Page"
+        android:text="Login page"
+        android:textColor="@color/colorTitle"
+        android:textSize="22sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
 
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/login_email"
-        android:layout_width="240dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="32dp"
-        android:hint="Email..."
+    <soup.neumorphism.NeumorphButton
+        android:id="@+id/logInbutton"
+        style="@style/Widget.Neumorph.Button"
+        android:layout_width="144dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/login_button"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="@+id/nib_back"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/registerText" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/login_emailInput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/login_password"
-        android:layout_width="240dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="32dp"
-        android:hint="Password..."
+    <soup.neumorphism.NeumorphCardView
+        android:id="@+id/login_emailInput"
+        style="@style/Widget.Neumorph.CardView"
+        android:layout_width="286dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_email">
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:neumorph_shapeType="pressed">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/login_passwordInput"
+        <EditText
+            android:id="@+id/login_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword" />
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="12dp"
+            android:background="@null"
+            android:hint="@string/email"
+            android:inputType="textCapWords"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+    </soup.neumorphism.NeumorphCardView>
+
+    <soup.neumorphism.NeumorphCardView
+        android:id="@+id/login_passwordInput"
+        style="@style/Widget.Neumorph.CardView"
+        android:layout_width="286dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_emailInput"
+        app:neumorph_shapeType="pressed">
+
+        <EditText
+            android:id="@+id/login_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="12dp"
+            android:background="@null"
+            android:hint="@string/password"
+            android:inputType="textPassword|textCapWords"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </soup.neumorphism.NeumorphCardView>
 
     <TextView
         android:id="@+id/registerText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:text="Not a user? Sign up"
+        android:textColor="#6C6C6C"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_password" />
-    <Button
-        android:id="@+id/logInbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Log in"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerText" />
+        app:layout_constraintTop_toBottomOf="@+id/login_passwordInput" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

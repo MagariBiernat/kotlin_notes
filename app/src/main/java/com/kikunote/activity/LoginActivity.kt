@@ -53,8 +53,8 @@ class LoginActivity: AppCompatActivity(), View.OnClickListener {
                 startActivity(Intent(this, RegisterActivity::class.java))
             }
             R.id.logInbutton -> {
-                val email = binding.loginEmailInput.text.toString()
-                val password = binding.loginPasswordInput.text.toString()
+                val email = binding.loginEmail.text.toString()
+                val password = binding.loginPassword.text.toString()
 
                 if(email.isEmpty() || password.isEmpty()) {
                     return Toast
