@@ -19,6 +19,16 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
         dao = database.getUserDao()
     }
 
+    fun getCurrentUser(email: String): User{
+        val user = dao.getUserByEmail(email)
+
+        return user[0]
+    }
+
+    fun updateUser(user: User) {
+        dao.update(user)
+    }
+
     fun insertNewUser(user: User): Boolean{
         val listItems = arrayListOf<User>()
 

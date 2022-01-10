@@ -7,6 +7,12 @@
     tools:context="com.kikunote.activity.ProfileActivity"
     >
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_edit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <soup.neumorphism.NeumorphCardView
         android:id="@+id/profile_nameInput"
         style="@style/Widget.Neumorph.CardView"
@@ -17,7 +23,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.461"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintTop_toBottomOf="@+id/welcomeText"
         app:neumorph_shapeType="pressed">
 
         <EditText
@@ -38,17 +44,15 @@
 
     </soup.neumorphism.NeumorphCardView>
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar_edit"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
     <soup.neumorphism.NeumorphCardView
         android:id="@+id/profile_passwordInput"
         style="@style/Widget.Neumorph.CardView"
         android:layout_width="286dp"
         android:layout_height="75dp"
+        android:layout_marginTop="24dp"
+
         android:layout_marginStart="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.461"
@@ -57,7 +61,7 @@
         app:neumorph_shapeType="pressed">
 
         <EditText
-            android:id="@+id/profile_password"
+            android:id="@+id/profile_currentPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
@@ -75,7 +79,7 @@
     </soup.neumorphism.NeumorphCardView>
 
     <soup.neumorphism.NeumorphCardView
-        android:id="@+id/profile_confirm_passwordInput"
+        android:id="@+id/profile_new_passwordInput"
         style="@style/Widget.Neumorph.CardView"
         android:layout_width="286dp"
         android:layout_height="75dp"
@@ -84,6 +88,36 @@
         app:layout_constraintHorizontal_bias="0.461"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profile_passwordInput"
+        app:neumorph_shapeType="pressed">
+
+    <EditText
+        android:id="@+id/profile_new_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="12dp"
+        android:background="@null"
+        android:hint="@string/new_password"
+        android:inputType="textPassword|textCapWords"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    </soup.neumorphism.NeumorphCardView>
+
+
+    <soup.neumorphism.NeumorphCardView
+        android:id="@+id/profile_confirm_passwordInput"
+        style="@style/Widget.Neumorph.CardView"
+        android:layout_width="286dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_new_passwordInput"
         app:neumorph_shapeType="pressed">
 
         <EditText
@@ -95,7 +129,7 @@
             android:layout_marginRight="16dp"
             android:layout_marginBottom="12dp"
             android:background="@null"
-            android:hint="@string/confrim_password"
+            android:hint="@string/confirm_password"
             android:inputType="textPassword|textCapWords"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -103,4 +137,14 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     </soup.neumorphism.NeumorphCardView>
+
+    <TextView
+        android:id="@+id/welcomeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 </androidx.constraintlayout.widget.ConstraintLayout>
