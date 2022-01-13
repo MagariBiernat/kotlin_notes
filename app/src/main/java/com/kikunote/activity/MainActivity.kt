@@ -147,7 +147,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, PopupMenu.OnMenu
             .background(R.drawable.background_dialog)
             .icon(R.mipmap.ic_launcher)
             .onPositive("Yes",
-                buttonBackgroundColor = android.R.color.background_light,
+                buttonBackgroundColor = android.R.color.holo_red_light,
                 textColor = ContextCompat.getColor(this, R.color.colorTitle)
             ){
                 session.logoutUser()
@@ -155,8 +155,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, PopupMenu.OnMenu
             }
             .onNegative(
                 "Cancel",
-                buttonBackgroundColor = android.R.color.background_light,
-                textColor = ContextCompat.getColor(this, R.color.colorTitle)
+                buttonBackgroundColor = R.drawable.bg_btn_black,
+                textColor = ContextCompat.getColor(this, R.color.background)
             ){
                 return@onNegative
             }

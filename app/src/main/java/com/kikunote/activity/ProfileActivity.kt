@@ -79,7 +79,7 @@ class ProfileActivity : AppCompatActivity(), View.OnClickListener {
                 val newProfileName = binding.profileName.text.toString()
 
 
-                val confirmPassword = binding.profileConfirmPassword.text.toString()
+                val confirmPassword = binding.profileCurrentPassword.text.toString()
                 val newPassword = binding.profileNewPassword.text.toString()
                 val confirmNewPassword = binding.profileConfirmPassword.text.toString()
 
